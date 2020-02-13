@@ -4,25 +4,25 @@ const defaults = {
 }
 
 //
-const infobox = function(options) {
+const pad = require('../_lib/pad')
+
+// render an infobox as a table with two columns, key + value
+const doInfobox = function(options) {
   options = Object.assign({}, defaults, options)
-  let out = '\n \\vspace*{0.3cm} % Info Box\n\n'
-  out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n'
-  out += '  \\hline  %horizontal line\n'
-  //todo: render top image here
+  let md = '|' + pad('', 35) + '|' + pad('', 30) + '|\n'
+  md += '|' + pad('---', 35) + '|' + pad('---', 30) + '|\n'
+  //todo: render top image here (somehow)
   Object.keys(this.data).forEach(k => {
     if (dontDo[k] === true) {
       return
     }
+    let key = '**' + k + '**'
     let s = this.data[k]
-    let val = s.latex(options)
-    out += '  % ---------- \n'
-    out += '      ' + k + ' & \n'
-    out += '      ' + val + '\\\\ \n'
-    out += '  \\hline  %horizontal line\n'
+    let val = s.markdown(options)
+    //markdown is more newline-sensitive than wiki
+    val = val.split(/\n/g).join(', ')
+    md += '|' + pad(key, 35) + '|' + pad(val, 30) + ' |\n'
   })
-  out += '\\end{tabular} \n'
-  out += '\n\\vspace*{0.3cm}\n\n'
-  return out
+  return md
 }
-module.exports = infobox
+module.exports = doInfobox

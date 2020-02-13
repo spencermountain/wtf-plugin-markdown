@@ -6,7 +6,7 @@ const defaults = {
   paragraphs: true
 }
 
-const doSection = options => {
+const doSection = function(options) {
   options = Object.assign({}, defaults, options)
   let md = ''
   //make the header
