@@ -1,12 +1,9 @@
+const wtf = require('wtf_wikipedia')
 if (typeof process !== undefined && typeof module !== undefined) {
-  let nlp
   if (process.env.TESTENV === 'prod') {
-    nlp = require('../../../')
-    nlp.extend(require(`../`))
+    wtf.extend(require(`../`))
   } else {
-    nlp = require('../../../src')
-    nlp.extend(require(`../src`))
+    wtf.extend(require(`../src`))
   }
-
-  module.exports = nlp
+  module.exports = wtf
 }

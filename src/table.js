@@ -13,7 +13,7 @@ const makeRow = arr => {
 }
 
 //markdown tables are weird
-const doTable = options => {
+const doTable = function(options) {
   let md = ''
   if (!this || this.length === 0) {
     return md

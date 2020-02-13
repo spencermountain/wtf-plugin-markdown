@@ -1,4 +1,3 @@
-const setDefaults = require('../_lib/setDefaults')
 const defaults = {
   redirects: true,
   infoboxes: true,
@@ -18,7 +17,7 @@ const softRedirect = function(doc) {
 
 //turn a Doc object into a markdown string
 const toMarkdown = function(options) {
-  options = setDefaults(options, defaults)
+  options = Object.assign({}, defaults, options)
   let data = this.data
   let md = ''
   //if it's a redirect page, give it a 'soft landing':

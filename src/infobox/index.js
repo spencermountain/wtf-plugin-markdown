@@ -1,12 +1,11 @@
 const dontDo = require('./_skip-keys')
-const setDefaults = require('../_lib/setDefaults')
 const defaults = {
   images: true
 }
 
 //
 const infobox = function(options) {
-  options = setDefaults(options, defaults)
+  options = Object.assign({}, defaults, options)
   let out = '\n \\vspace*{0.3cm} % Info Box\n\n'
   out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n'
   out += '  \\hline  %horizontal line\n'

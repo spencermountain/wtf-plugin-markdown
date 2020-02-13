@@ -1,6 +1,6 @@
 'use strict'
 var test = require('tape')
-var wtf = require('./lib')
+var wtf = require('./_lib')
 
 test('basic-markdown', t => {
   var md = wtf('he is [[Spencer Kelly|so cool]] and [http://cool.com fresh]').markdown()

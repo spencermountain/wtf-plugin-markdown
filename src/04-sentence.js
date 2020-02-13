@@ -1,5 +1,4 @@
-const smartReplace = require('../_lib/smartReplace')
-const setDefaults = require('../_lib/setDefaults')
+const smartReplace = require('./_lib/smartReplace')
 
 const defaults = {
   links: true,
@@ -8,7 +7,7 @@ const defaults = {
 
 //create links, bold, italic in markdown
 const toMarkdown = options => {
-  options = setDefaults(options, defaults)
+  options = Object.assign({}, defaults, options)
   let md = this.text()
   //turn links back into links
   if (options.links === true) {
